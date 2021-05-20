@@ -44,6 +44,14 @@ import {
 
 
 import { useIcons } from '@/icons';
+
+import { mockXHR } from '@/mock/index';
+
+if (process.env.NODE_ENV === 'mock') {
+  // 判断是否为mock模式
+  mockXHR();
+}
+
 const app = createApp(App);
 app
     .use(router)

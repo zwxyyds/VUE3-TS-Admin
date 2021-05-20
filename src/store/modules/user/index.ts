@@ -34,6 +34,7 @@ const actions = {
     async login({ commit }: { commit: Commit }, userInfo: LoginParams) {
         try {
             const res = await Login(userInfo);
+            console.log(res);        
             const token = res.data.access_token;
             commit('SET_TOKEN', res.data.access_token);
             setToken(token);
