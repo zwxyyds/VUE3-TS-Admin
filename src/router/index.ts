@@ -1,26 +1,27 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import Home from "../views/Home.vue";
+import CommonLayout from '@/layouts/CommonLayout.vue';
+import { MenuRouteItem } from './typing';
+import Title from 'ant-design-vue/lib/typography/Title';
 
-const routes: Array<RouteRecordRaw> = [
+const staticRoutes: MenuRouteItem[] = [
   {
-    path: "/",
-    name: "Home",
-    component: Home,
-  },
-  {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    path: "/Login",
+    name: "Login",
+    meta: { title: 'Login' },
+    component: CommonLayout,
+    children: [{
+      path: "/login",
+      name: "Login",
+      meta: { title: 'Login' },
+      component: () => import('@/views/login/index.vue')
+    }]
+
   },
 ];
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes,
+  routes: staticRoutes,
 });
 
 export default router;
