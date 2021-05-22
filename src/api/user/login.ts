@@ -16,5 +16,5 @@ export function GetUserInfo() {
 
 //登出接口
 export function Logout() {
-    return request.delete(`/user/logout`)
+    return request.get(`/user/logout`)
 }

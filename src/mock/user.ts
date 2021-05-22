@@ -39,4 +39,16 @@ export default [
             };
         },
     },
+
+     // logout
+     {
+        url: '/user/logout',
+        type: 'get',
+        response: () => {
+            return {
+                code: 200,
+                message: '登出成功',
+            };
+        },
+    },
 ];

@@ -5,7 +5,7 @@ import { getToken } from '@/utils/cookie';
 import store from '@/store';
 import Layout from '@/layouts';
 
-const whiteList = ['/user/login'];
+const whiteList = ['/login'];
 
 router.beforeEach(async (to, from, next) => {
   const token = getToken();
@@ -24,7 +24,6 @@ router.beforeEach(async (to, from, next) => {
       if (token) {
         if (JSON.stringify(userInfo) == '{}') {
           const res = await store.dispatch('user/getUserInfo');
-
           if (res.code === 200) {
             const menuRoutes = [...defaultRoutes, ...filterRoutes(res.data?.menus ?? [])];
             console.log(menuRoutes);

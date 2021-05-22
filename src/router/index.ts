@@ -15,10 +15,7 @@ const staticRoutes: MenuRouteItem[] = [
       meta: { title: 'Login' },
       component: () => import('@/views/login/index.vue')
     }]
-
   },
-
-
 ];
 
 
@@ -49,7 +46,7 @@ export const defaultRoutes: MenuRouteItem[] = [
         path: '/example/table',
         name: 'example-table',
         meta: { title: '表格页' },
-        component: () => import('@/views/example/table.vue'),     
+        component: () => import('@/views/example/table.vue'),
       },
       {
         path: '/example/form',

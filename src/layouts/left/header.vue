@@ -55,7 +55,6 @@ export default defineComponent({
   components: {
     MenuUnfoldOutlined,
     MenuFoldOutlined,
-    // GlobalOutlined,
     // Setting,
   },
   setup() {

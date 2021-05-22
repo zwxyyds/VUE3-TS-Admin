@@ -34,7 +34,7 @@ const actions = {
     async login({ commit }: { commit: Commit }, userInfo: LoginParams) {
         try {
             const res = await Login(userInfo);
-            console.log(res);        
+            console.log(res);
             const token = res.data.access_token;
             commit('SET_TOKEN', res.data.access_token);
             setToken(token);
@@ -49,7 +49,7 @@ const actions = {
             const res = await GetUserInfo();
             console.log(res.data);
             commit('SET_USER_INFO', res.data?.user);
-            
+
             // commit('SET_PERMISSIONS', res.data?.permissions);
             // commit('SET_MENUS', res.data?.menus);
             // commit('SET_ROLES', res.data?.roles);
@@ -60,13 +60,15 @@ const actions = {
     },
 
     async logout({ commit }: { commit: Commit }) {
-        try {
+        try {      
             const res = await Logout();
+            console.log('logout: ' + res);
+
             commit('SET_TOKEN', '');
             commit('SET_USER_INFO', {});
-            commit('SET_MENUS', []);
-            commit('SET_PERMISSIONS', []);
-            commit('SET_ROLES', []);
+            // commit('SET_MENUS', []);
+            // commit('SET_PERMISSIONS', []);
+            // commit('SET_ROLES', []);
             removeToken();
             return Promise.resolve(res);
         } catch (e) {
