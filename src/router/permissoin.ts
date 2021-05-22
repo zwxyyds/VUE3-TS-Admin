@@ -31,7 +31,6 @@ router.beforeEach(async (to, from, next) => {
               router.addRoute(item);
             });
 
-
             next(to.path);
           }
         } else {
