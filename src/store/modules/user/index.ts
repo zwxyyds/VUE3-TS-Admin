@@ -47,10 +47,12 @@ const actions = {
     async getUserInfo({ commit }: { commit: Commit }) {
         try {
             const res = await GetUserInfo();
+            console.log(res.data);
             commit('SET_USER_INFO', res.data?.user);
-            commit('SET_PERMISSIONS', res.data?.permissions);
-            commit('SET_MENUS', res.data?.menus);
-            commit('SET_ROLES', res.data?.roles);
+            
+            // commit('SET_PERMISSIONS', res.data?.permissions);
+            // commit('SET_MENUS', res.data?.menus);
+            // commit('SET_ROLES', res.data?.roles);
             return Promise.resolve(res);
         } catch (e) {
             return Promise.reject(e);

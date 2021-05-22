@@ -1,14 +1,13 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 import CommonLayout from '@/layouts/CommonLayout.vue';
 import Layout from '@/layouts';
 import { MenuRouteItem } from './typing';
-import Title from 'ant-design-vue/lib/typography/Title';
 
 const staticRoutes: MenuRouteItem[] = [
   {
     path: "/Login",
     name: "Login",
-    meta: { title: 'Login' },
+    meta: { title: 'Login', hideInMenu: true, },
     component: CommonLayout,
     children: [{
       path: "/login",
@@ -19,20 +18,47 @@ const staticRoutes: MenuRouteItem[] = [
 
   },
 
+
+];
+
+
+export const defaultRoutes: MenuRouteItem[] = [
   {
-    path: "/",
-    name: "Home",
-    meta: { title: 'Home' },
+    path: '/',
+    name: "home",
+    meta: { title: 'home' },
+    redirect: '/home',
     component: Layout,
     children: [{
-      path: "/Home",
-      name: "Home",
-      meta: { title: 'Home' },
+      path: "/home",
+      name: "homepage",
+      meta: { title: '工作台' },
       component: () => import('@/views/home/index.vue')
     }]
-
   },
-
+  {
+    path: '/example',
+    meta: {
+      title: '组件案例',
+    },
+    name: 'example',
+    redirect: '/example/table',
+    component: Layout,
+    children: [
+      {
+        path: '/example/table',
+        name: 'example-table',
+        meta: { title: '表格页' },
+        component: () => import('@/views/example/table.vue'),     
+      },
+      {
+        path: '/example/form',
+        name: 'example-form',
+        meta: { title: '表单页' },
+        component: () => import('@/views/example/form.vue'),
+      },
+    ],
+  },
 ];
 
 const router = createRouter({

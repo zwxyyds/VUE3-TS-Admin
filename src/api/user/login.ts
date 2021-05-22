@@ -11,10 +11,10 @@ export function Login(params: LoginParams) {
 
 //获取用户信息
 export function GetUserInfo() {
-    return request.get(`/upms/user/info`)
+    return request.get(`/user/getUserInfo`)
 }
 
 //登出接口
 export function Logout() {
-    return request.delete(`auth/token/logout`)
+    return request.delete(`/user/logout`)
 }

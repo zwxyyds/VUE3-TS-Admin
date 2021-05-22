@@ -16,3 +16,17 @@ export interface UserState {
     permissions: string[];
     menus: MenuRouteItem[];
 }
+
+export interface MenuItem extends CommonField {
+    childrenList: MenuItem[];
+    extra: string;
+    icon: string;
+    keepAlive: string;
+    menuId: string;
+    name: string;
+    parentId: string;
+    path: string;
+    permission: string;
+    sort: number;
+    type: string;
+}

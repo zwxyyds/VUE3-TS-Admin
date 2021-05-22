@@ -55,19 +55,6 @@
         </a-button>
       </a-form-item>
 
-      <div class="user-login-other">
-        <!-- <span>其他登录方式</span>
-        <a>
-          <alipay-circle-outlined class="item-icon" />
-        </a>
-        <a>
-          <taobao-circle-outlined class="item-icon" />
-        </a>
-        <a>
-          <weibo-circle-outlined class="item-icon" />
-        </a> -->
-        <!-- <router-link class="register" to="/user/register">注册账户</router-link> -->
-      </div>
     </a-form>
   </div>
 </template>
@@ -97,17 +84,7 @@ export default defineComponent({
       time: 60,
       smsSendBtn: false,
     });
-    const handleUsernameOrEmail = (rule: any, value: any) => {
-      return new Promise(resolve => {
-        const regex = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
-        if (regex.test(value)) {
-          state.loginType = 0;
-        } else {
-          state.loginType = 1;
-        }
-        resolve(state.loginType);
-      });
-    };
+
     const modelRef = reactive({
       rememberMe: true,
       username: '',
@@ -117,7 +94,6 @@ export default defineComponent({
       rememberMe: undefined,
       username: [
         { required: true, message: '请输入帐户名或邮箱地址', type: 'string' },
-        { validator: handleUsernameOrEmail, trigger: 'change' },
       ],
       password: [
         { required: true, message: '请输入密码', type: 'string', trigger: ['blur', 'change'] },
@@ -125,10 +101,8 @@ export default defineComponent({
 
     });
     const { validateInfos, validate, resetFields } = useForm(modelRef, rulesRef);
-    const handleTabClick = (key: string) => {
-      state.customActiveKey = key;
-      resetFields();
-    };
+
+
     const loginSuccess = (name: string) => {
       router.push({ path: '/' });
       setTimeout(() => {
@@ -139,6 +113,7 @@ export default defineComponent({
       }, 1000);
       state.isLoginError = false;
     };
+    
     const handleSubmit = (e: Event) => {
       e.preventDefault();
       const validateNames =
@@ -148,8 +123,6 @@ export default defineComponent({
         .then(async values => {
           const res = await store.dispatch(`user/login`, {
             ...values,
-            // grant_type: 'password',
-            // scope: 'server',
           });
           state.loginBtn = false;
           if (res.code === 200) {
@@ -166,18 +139,12 @@ export default defineComponent({
       ...toRefs(state),
       modelRef,
       validateInfos,
-      handleTabClick,
       handleSubmit,
     };
   },
   components: {
     UserOutlined,
     LockOutlined,
-    // MobileOutlined,
-    // MailOutlined,
-    // AlipayCircleOutlined,
-    // TaobaoCircleOutlined,
-    // WeiboCircleOutlined,
   },
 });
 </script>

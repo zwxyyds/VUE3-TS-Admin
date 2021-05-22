@@ -1,6 +1,6 @@
 import { defineComponent, computed } from 'vue';
 import { useStore } from 'vuex';
-
+import LeftMenuLayout from './LeftMenuLayout.vue';
 
 export default defineComponent({
     name: 'GlobalLayout',
@@ -8,13 +8,13 @@ export default defineComponent({
         const store = useStore();
 
         const layout = computed(() => {
-            return 'left'
+            return 'left';
             // return store.state.theme.layout;
         });
 
         const layoutTarget = {
-            left: '<div>left</div>',
-            basic: '<div>basic</div>',
+            left: <LeftMenuLayout />,
+            basic: <div>basic</div>,
         } as Record<string, any>;
 
         return () => layoutTarget[layout.value];
