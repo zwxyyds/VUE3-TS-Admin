@@ -12,50 +12,21 @@
       <menu-fold-outlined v-else class="trigger" @click="setLayoutCol(true)" />
     </div>
     <div class="header-right">
-      <!-- <setting /> -->
-      <a-dropdown>
-        <a class="header-dropdown-link" @click.prevent>
-          <a-avatar
-            size="small"
-            src="https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png"
-            class="header-account-avatar"
-          />
-          <span>{{ userInfo.name }}</span>
-        </a>
-        <template #overlay>
-          <a-menu class="ant-pro-dropdown-menu" :selected-keys="[]">
-            <a-menu-item key="center">个人中心</a-menu-item>
-            <a-menu-item key="settings">个人设置</a-menu-item>
-            <a-menu-divider />
-            <a-menu-item key="logout" @click="handleLogout">退出登录</a-menu-item>
-          </a-menu>
-        </template>
-      </a-dropdown>
-      <!-- <a-dropdown>
-        <a class="header-dropdown-link" @click.prevent style="margin-right: 8px">
-          <global-outlined />
-        </a>
-        <template #overlay>
-          <a-menu>
-            <a-menu-item key="0">CN 简体中文</a-menu-item>
-            <a-menu-item key="1">US English</a-menu-item>
-          </a-menu>
-        </template>
-      </a-dropdown> -->
+      <user-setting/>
     </div>
   </a-layout-header>
 </template>
 
 <script lang="ts">
-// import Setting from '../components/setting.vue';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons-vue';
 import { useStore } from 'vuex';
 import { computed, defineComponent } from 'vue';
+import UserSetting from '../components/UserSetting.vue'
 export default defineComponent({
   components: {
     MenuUnfoldOutlined,
     MenuFoldOutlined,
-    // Setting,
+    UserSetting,
   },
   setup() {
     const store = useStore();
@@ -68,16 +39,10 @@ export default defineComponent({
     const setLayoutCol = (bool: boolean) => {
       store.dispatch('theme/configLayoutCol', bool);
     };
-    const handleLogout = () => {
-      store.dispatch('user/logout').then(() => {
-        window.location.reload();
-      });
-    };
 
     const userInfo = store.state.user.userInfo;
 
     return {
-      handleLogout,
       userInfo,
       theme,
       collapsed,

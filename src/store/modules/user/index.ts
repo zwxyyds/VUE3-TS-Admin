@@ -49,7 +49,6 @@ const actions = {
             const res = await GetUserInfo();
             console.log(res.data);
             commit('SET_USER_INFO', res.data?.user);
-
             // commit('SET_PERMISSIONS', res.data?.permissions);
             // commit('SET_MENUS', res.data?.menus);
             // commit('SET_ROLES', res.data?.roles);
@@ -62,8 +61,6 @@ const actions = {
     async logout({ commit }: { commit: Commit }) {
         try {      
             const res = await Logout();
-            console.log('logout: ' + res);
-
             commit('SET_TOKEN', '');
             commit('SET_USER_INFO', {});
             // commit('SET_MENUS', []);
