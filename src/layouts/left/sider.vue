@@ -1,6 +1,9 @@
 <template>
   <a-layout-sider v-model:collapsed="collapsed">
-    <div class="logo" />
+    <div class="logo">
+      <img src="@/assets/logo.png" />
+      <h1 v-show="!collapsed">V3 ADMIN</h1>
+    </div>
     <a-menu
       mode="inline"
       theme="dark"
@@ -12,7 +15,8 @@
         <template v-if="item.children.length">
           <a-sub-menu :key="item.path">
             <template #title>
-              <appstore-outlined />
+              <!-- <appstore-outlined /> -->
+              <component :is="getIcon(item.meta.icon)" />
               <span>
                 {{ item.meta.title }}
               </span>
@@ -69,16 +73,23 @@ export default defineComponent({
       }
       e.stopPropagation?.();
     };
+
+    const getIcon = (icon: string) => {
+      return icon;
+    };
+
     onMounted(() => {
       selectedKeys.value = [route.path];
       openKeys.value = [route.matched[0].path];
     });
+
     return {
       collapsed,
       handleLink,
       defaultRoutes,
       selectedKeys,
       openKeys,
+      getIcon,
     };
   },
 });
@@ -89,5 +100,27 @@ export default defineComponent({
 .ant-menu-item,
 .ant-menu-submenu {
   text-align: left;
+}
+
+.logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 16px 16px;
+  line-height: 32px;
+  h1,
+  img {
+    display: inline-block;
+    height: 32px;
+    vertical-align: middle;
+  }
+  h1 {
+    color: #fff;
+    margin: 0 0 0 12px;
+    overflow: hidden;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 32px;
+  }
 }
 </style>

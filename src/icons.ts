@@ -9,9 +9,10 @@ import {
   WarningOutlined,
   CheckCircleOutlined,
   HomeOutlined,
+  DashboardOutlined,
 } from '@ant-design/icons-vue';
-
 export const useIcons = (app: App) => {
+  app.component(DashboardOutlined.displayName, DashboardOutlined);
   app.component(HeartOutlined.displayName, HeartOutlined);
   app.component(HistoryOutlined.displayName, HistoryOutlined);
   app.component(FormOutlined.displayName, FormOutlined);

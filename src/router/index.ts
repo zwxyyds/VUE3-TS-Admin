@@ -23,13 +23,19 @@ export const defaultRoutes: MenuRouteItem[] = [
   {
     path: '/',
     name: "home",
-    meta: { title: 'home' },
+    meta: {
+      title: 'home',
+      icon: 'DashboardOutlined',
+    },
     redirect: '/home',
     component: Layout,
     children: [{
       path: "/home",
       name: "homepage",
-      meta: { title: '工作台' },
+      meta: {
+        title: '工作台',
+        icon: 'DashboardOutlined',
+      },
       component: () => import('@/views/home/index.vue')
     }]
   },
@@ -37,6 +43,7 @@ export const defaultRoutes: MenuRouteItem[] = [
     path: '/example',
     meta: {
       title: '组件案例',
+      icon: 'TableOutlined',
     },
     name: 'example',
     redirect: '/example/table',
@@ -45,13 +52,19 @@ export const defaultRoutes: MenuRouteItem[] = [
       {
         path: '/example/table',
         name: 'example-table',
-        meta: { title: '表格页' },
+        meta: {
+          title: '表格页',
+          icon: 'TableOutlined',
+        },
         component: () => import('@/views/example/table.vue'),
       },
       {
         path: '/example/form',
         name: 'example-form',
-        meta: { title: '表单页' },
+        meta: {
+          title: '表单页',
+          icon: 'FormOutlined',
+        },
         component: () => import('@/views/example/form.vue'),
       },
     ],
