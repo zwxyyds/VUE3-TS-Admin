@@ -11,7 +11,7 @@
         <router-view />
       </div>
     </a-layout-content>
-    <a-layout-footer :style="{ textAlign: 'center' }">©2021 Created by LoctekFE</a-layout-footer>
+    <a-layout-footer :style="{ textAlign: 'center' }">©2021 Created by zwxE</a-layout-footer>
   </a-layout>
 </template>
 <script lang="ts">
