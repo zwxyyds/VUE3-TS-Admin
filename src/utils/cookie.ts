@@ -1,9 +1,9 @@
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 
-const TokenKey = 'Authorization';
+const TokenKey = "Authorization";
 
-const Layout = 'layout';
-const LayoutCol = 'layoutCollapsed';
+const Layout = "layout";
+const LayoutCol = "layoutCollapsed";
 
 // Token
 export function getToken(): string {

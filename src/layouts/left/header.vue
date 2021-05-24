@@ -8,20 +8,24 @@
     }"
   >
     <div class="header-left">
-      <menu-unfold-outlined v-if="collapsed" class="trigger" @click="setLayoutCol(false)" />
+      <menu-unfold-outlined
+        v-if="collapsed"
+        class="trigger"
+        @click="setLayoutCol(false)"
+      />
       <menu-fold-outlined v-else class="trigger" @click="setLayoutCol(true)" />
     </div>
     <div class="header-right">
-      <user-setting/>
+      <user-setting />
     </div>
   </a-layout-header>
 </template>
 
 <script lang="ts">
-import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons-vue';
-import { useStore } from 'vuex';
-import { computed, defineComponent } from 'vue';
-import UserSetting from '../components/UserSetting.vue'
+import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons-vue";
+import { useStore } from "vuex";
+import { computed, defineComponent } from "vue";
+import UserSetting from "../components/UserSetting.vue";
 export default defineComponent({
   components: {
     MenuUnfoldOutlined,
@@ -37,7 +41,7 @@ export default defineComponent({
       return store.state.theme.config;
     });
     const setLayoutCol = (bool: boolean) => {
-      store.dispatch('theme/configLayoutCol', bool);
+      store.dispatch("theme/configLayoutCol", bool);
     };
 
     const userInfo = store.state.user.userInfo;

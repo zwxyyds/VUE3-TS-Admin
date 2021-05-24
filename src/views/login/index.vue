@@ -14,7 +14,7 @@
             style="margin-bottom: 24px"
             message="账户或密码错误"
           />
-          <a-form-item v-bind="validateInfos.username">  
+          <a-form-item v-bind="validateInfos.username">
             <a-input
               size="large"
               v-model:value="modelRef.username"
@@ -41,7 +41,6 @@
         </a-tab-pane>
       </a-tabs>
 
-
       <a-form-item style="margin-top: 24px">
         <a-button
           size="large"
@@ -54,28 +53,24 @@
           确定
         </a-button>
       </a-form-item>
-
     </a-form>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs } from 'vue';
-import { notification } from 'ant-design-vue';
-import { useForm } from '@ant-design-vue/use';
-import {
-  UserOutlined,
-  LockOutlined,
-} from '@ant-design/icons-vue';
-import { useRouter } from 'vue-router';
-import { useStore } from 'vuex';
+import { defineComponent, reactive, toRefs } from "vue";
+import { notification } from "ant-design-vue";
+import { useForm } from "@ant-design-vue/use";
+import { UserOutlined, LockOutlined } from "@ant-design/icons-vue";
+import { useRouter } from "vue-router";
+import { useStore } from "vuex";
 export default defineComponent({
-  name: 'Login',
+  name: "Login",
   setup() {
     const router = useRouter();
     const store = useStore();
     const state = reactive({
-      customActiveKey: 'tab1',
+      customActiveKey: "tab1",
       loginBtn: false,
       loginType: 0,
       isLoginError: false,
@@ -87,40 +82,48 @@ export default defineComponent({
 
     const modelRef = reactive({
       rememberMe: true,
-      username: '',
-      password: '',
+      username: "",
+      password: "",
     });
     const rulesRef = reactive({
       rememberMe: undefined,
       username: [
-        { required: true, message: '请输入帐户名或邮箱地址', type: 'string' },
+        { required: true, message: "请输入帐户名或邮箱地址", type: "string" },
       ],
       password: [
-        { required: true, message: '请输入密码', type: 'string', trigger: ['blur', 'change'] },
+        {
+          required: true,
+          message: "请输入密码",
+          type: "string",
+          trigger: ["blur", "change"],
+        },
       ],
-
     });
-    const { validateInfos, validate, resetFields } = useForm(modelRef, rulesRef);
-
+    const { validateInfos, validate } = useForm(
+      modelRef,
+      rulesRef
+    );
 
     const loginSuccess = (name: string) => {
-      router.push({ path: '/' });
+      router.push({ path: "/" });
       setTimeout(() => {
         notification.success({
           message: `Hi! ${name}`,
-          description: 'Welcome back',
+          description: "Welcome back",
         });
       }, 1000);
       state.isLoginError = false;
     };
-    
+
     const handleSubmit = (e: Event) => {
       e.preventDefault();
       const validateNames =
-        state.customActiveKey === 'tab1' ? ['username', 'password'] : ['mobile', 'captcha'];
+        state.customActiveKey === "tab1"
+          ? ["username", "password"]
+          : ["mobile", "captcha"];
       state.loginBtn = true;
       validate(validateNames)
-        .then(async values => {
+        .then(async (values) => {
           const res = await store.dispatch(`user/login`, {
             ...values,
           });

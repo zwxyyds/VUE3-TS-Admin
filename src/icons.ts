@@ -1,4 +1,4 @@
-import { App } from 'vue';
+import { App } from "vue";
 import {
   HeartOutlined,
   HistoryOutlined,
@@ -10,7 +10,7 @@ import {
   CheckCircleOutlined,
   HomeOutlined,
   DashboardOutlined,
-} from '@ant-design/icons-vue';
+} from "@ant-design/icons-vue";
 export const useIcons = (app: App) => {
   app.component(DashboardOutlined.displayName, DashboardOutlined);
   app.component(HeartOutlined.displayName, HeartOutlined);

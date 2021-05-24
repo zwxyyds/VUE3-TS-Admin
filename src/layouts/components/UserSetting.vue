@@ -60,7 +60,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang='less'>
+<style lang="less">
 .header-dropdown-link {
   padding: 0 12px;
   transition: background-color ease 0.2s;

@@ -1,71 +1,74 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import CommonLayout from '@/layouts/CommonLayout.vue';
-import Layout from '@/layouts';
-import { MenuRouteItem } from './typing';
+import CommonLayout from "@/layouts/CommonLayout.vue";
+import Layout from "@/layouts";
+import { MenuRouteItem } from "./typing";
 
 const staticRoutes: MenuRouteItem[] = [
   {
     path: "/Login",
     name: "Login",
-    meta: { title: 'Login', hideInMenu: true, },
+    meta: { title: "Login", hideInMenu: true },
     component: CommonLayout,
-    children: [{
-      path: "/login",
-      name: "Login",
-      meta: { title: 'Login' },
-      component: () => import('@/views/login/index.vue')
-    }]
+    children: [
+      {
+        path: "/login",
+        name: "Login",
+        meta: { title: "Login" },
+        component: () => import("@/views/login/index.vue"),
+      },
+    ],
   },
 ];
 
-
 export const defaultRoutes: MenuRouteItem[] = [
   {
-    path: '/',
+    path: "/",
     name: "home",
     meta: {
-      title: 'home',
-      icon: 'DashboardOutlined',
+      title: "home",
+      icon: "HomeOutlined",
     },
-    redirect: '/home',
-    component: Layout,
-    children: [{
-      path: "/home",
-      name: "homepage",
-      meta: {
-        title: '工作台',
-        icon: 'DashboardOutlined',
-      },
-      component: () => import('@/views/home/index.vue')
-    }]
-  },
-  {
-    path: '/example',
-    meta: {
-      title: '组件案例',
-      icon: 'TableOutlined',
-    },
-    name: 'example',
-    redirect: '/example/table',
+    redirect: "/home",
     component: Layout,
     children: [
       {
-        path: '/example/table',
-        name: 'example-table',
+        path: "/home",
+        name: "homepage",
         meta: {
-          title: '表格页',
-          icon: 'TableOutlined',
+          title: "工作台",
+          icon: "DashboardOutlined",
         },
-        component: () => import('@/views/example/table.vue'),
+        component: () => import("@/views/home/index.vue"),
+      },
+    ],
+  },
+  {
+    path: "/example",
+    meta: {
+      title: "组件案例",
+      icon: "TableOutlined",
+    },
+    name: "example",
+    redirect: "/example/table",
+    component: Layout,
+    children: [
+      {
+        path: "/example/table",
+        name: "example-table",
+        meta: {
+          title: "表格页",
+          icon: "TableOutlined",
+        },
+        component: () => import("@/views/example/table.vue"),
       },
       {
-        path: '/example/form',
-        name: 'example-form',
+        path: "/example/form",
+        name: "example-form",
         meta: {
-          title: '表单页',
-          icon: 'FormOutlined',
+          title: "表单页",
+          icon: "FormOutlined",
         },
-        component: () => import('@/views/example/form.vue'),
+        component: () => import("@/views/example/form.vue"),
       },
     ],
   },

@@ -26,15 +26,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, onUnmounted } from 'vue';
+import { defineComponent, onMounted, onUnmounted } from "vue";
 export default defineComponent({
-  name: 'UserLayout',
+  name: "UserLayout",
   setup() {
     onMounted(() => {
-      document.body.classList.add('userLayout');
+      document.body.classList.add("userLayout");
     });
     onUnmounted(() => {
-      document.body.classList.remove('userLayout');
+      document.body.classList.remove("userLayout");
     });
     return {};
   },
@@ -91,7 +91,7 @@ export default defineComponent({
           color: @text-color;
           font-weight: 600;
           font-size: 33px;
-          font-family: Avenir, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+          font-family: Avenir, "Helvetica Neue", Arial, Helvetica, sans-serif;
         }
       }
       .desc {

@@ -1,14 +1,14 @@
-import type { ThemeState, ThemeLayout } from './typing';
-import type { Commit } from 'vuex';
+import type { ThemeState, ThemeLayout } from "./typing";
+import type { Commit } from "vuex";
 import {
   setLayout,
   getLayout,
   setLayoutCol,
   getLayoutCol,
-} from '@/utils/cookie';
+} from "@/utils/cookie";
 const state = {
-  layout: getLayout() || 'left',
-  layoutCollapsed: getLayoutCol() === 'true',
+  layout: getLayout() || "left",
+  layoutCollapsed: getLayoutCol() === "true",
 };
 
 const mutations = {
@@ -23,11 +23,11 @@ const mutations = {
 const actions = {
   configLayout({ commit }: { commit: Commit }, layout: ThemeLayout) {
     setLayout(layout);
-    commit('SET_LAYOUT', layout);
+    commit("SET_LAYOUT", layout);
   },
   configLayoutCol({ commit }: { commit: Commit }, bool: boolean) {
     setLayoutCol(bool);
-    commit('SET_LAYOUTCOL', bool);
+    commit("SET_LAYOUTCOL", bool);
   },
 };
 
@@ -39,4 +39,3 @@ const userStore = {
 };
 
 export default userStore;
-

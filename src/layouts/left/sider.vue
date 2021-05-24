@@ -26,7 +26,7 @@
               :key="childItem.path"
               @click="(e) => handleLink(e, childItem.path)"
             >
-              <appstore-outlined />
+              <component :is="getIcon(childItem.meta.icon)" />
               <span>{{ childItem.meta.title }}</span>
             </a-menu-item>
           </a-sub-menu>
@@ -36,7 +36,7 @@
             :key="item.menuId"
             @click="(e) => handleLink(e, item.path)"
           >
-            <appstore-outlined />
+            <component :is="getIcon(item.meta.icon)" />
             <span class="nav-text">{{ item.name }}</span>
           </a-menu-item>
         </template>
@@ -94,7 +94,6 @@ export default defineComponent({
   },
 });
 </script>
-
 
 <style lang="less">
 .ant-menu-item,

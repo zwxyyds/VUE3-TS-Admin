@@ -1,5 +1,5 @@
 export interface MockParams {
-    url: string;
-    type: string;
-    response(): Record<string, unknown>;
-  }
+  url: string;
+  type: string;
+  response(): Record<string, unknown>;
+}

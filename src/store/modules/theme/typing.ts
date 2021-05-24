@@ -1,4 +1,4 @@
-export type ThemeLayout = 'left' | 'top';
+export type ThemeLayout = "left" | "top";
 
 export interface ThemeState {
   layout: ThemeLayout;

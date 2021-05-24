@@ -40,18 +40,17 @@ import {
   Empty,
   Spin,
   Drawer,
-} from 'ant-design-vue';
+} from "ant-design-vue";
 
+import { useIcons } from "@/icons";
 
-import { useIcons } from '@/icons';
+import { mockXHR } from "@/mock/index";
 
-import { mockXHR } from '@/mock/index';
+import "@/router/permissoin";
 
-import '@/router/permissoin';
+import "./global.less";
 
-import './global.less';
-
-if (process.env.NODE_ENV === 'mock') {
+if (process.env.NODE_ENV === "mock") {
   // 判断是否为mock模式
   mockXHR();
 }
