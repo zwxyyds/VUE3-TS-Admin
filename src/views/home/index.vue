@@ -106,7 +106,7 @@
           :bordered="false"
           :body-style="{ padding: 0 }"
         >
-          <div class="item-group">
+          <!-- <div class="item-group">
             <a>操作一</a>
             <a>操作二</a>
             <a>操作三</a>
@@ -114,7 +114,7 @@
             <a>操作五</a>
             <a>操作六</a>
             <a-button size="small" type="primary" ghost>添加</a-button>
-          </div>
+          </div> -->
         </a-card>
         <a-card
           title="XX 指数"
