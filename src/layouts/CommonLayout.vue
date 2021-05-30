@@ -8,7 +8,7 @@
             <span class="title">VUE3+TS Admin</span>
           </a>
         </div>
-        <!-- <div class="desc"></div> -->
+        <div class="desc"></div>
       </div>
 
       <router-view />

@@ -1,7 +1,8 @@
 import Mock from "mockjs";
 import user from "./user";
+import table from "./table";
 import { MockParams } from "./typing";
-const mocks = [...user];
+const mocks = [...user, ...table];
 //设置延时时间
 Mock.setup({
   timeout: "300-600",

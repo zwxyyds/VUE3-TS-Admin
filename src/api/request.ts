@@ -55,3 +55,8 @@ service.interceptors.response.use(
 );
 
 export default service;
+
+export const requestPage = <T, U>(url: string, data: any) => {
+  return service.post<T, U>(url, data);
+};
+

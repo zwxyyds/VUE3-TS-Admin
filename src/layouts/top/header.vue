@@ -56,15 +56,17 @@
 
 <script lang="ts">
 import UserSetting from "../components/UserSetting.vue";
-import { computed, defineComponent } from "vue";
-import { useRouter } from "vue-router";
+import { computed, defineComponent, ref, onMounted } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex";
 import { defaultRoutes } from "@/router";
 export default defineComponent({
   components: { UserSetting },
   setup() {
+    const selectedKeys = ref<string[]>([]);
     const store = useStore();
     const router = useRouter();
+    const route = useRoute();
     const theme = computed(() => {
       return store.state.theme.config;
     });
@@ -75,6 +77,10 @@ export default defineComponent({
         window.open(link);
       }
     };
+
+    onMounted(() => {
+      selectedKeys.value = [route.path];
+    });
 
     return {
       defaultRoutes,
