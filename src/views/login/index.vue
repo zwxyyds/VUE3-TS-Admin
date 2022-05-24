@@ -60,10 +60,11 @@
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from "vue";
 import { notification } from "ant-design-vue";
-import { useForm } from "@ant-design-vue/use";
+import { Form } from "ant-design-vue";
 import { UserOutlined, LockOutlined } from "@ant-design/icons-vue";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
+const useForm = Form.useForm;
 export default defineComponent({
   name: "Login",
   setup() {
@@ -99,10 +100,7 @@ export default defineComponent({
         },
       ],
     });
-    const { validateInfos, validate } = useForm(
-      modelRef,
-      rulesRef
-    );
+    const { validateInfos, validate } = useForm(modelRef, rulesRef);
 
     const loginSuccess = (name: string) => {
       router.push({ path: "/" });

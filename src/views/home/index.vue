@@ -3,10 +3,7 @@
     <div class="page-header">
       <div class="page-header-content">
         <div class="avatar">
-          <a-avatar
-            size="large"
-            :src="currentUser.avatar"
-          />
+          <a-avatar size="large" :src="currentUser.avatar" />
         </div>
         <div class="content">
           <div class="content-title">

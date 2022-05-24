@@ -11,9 +11,10 @@
     "lint-fix": "vue-cli-service lint --fix"
   },
   "dependencies": {
+    "@ant-design-vue/use": "^0.0.1-alpha.10",
     "@antv/data-set": "^0.11.8",
     "@antv/g2": "^4.1.16",
-    "ant-design-vue": "^2.1.6",
+    "ant-design-vue": "^3.2.4",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "js-cookie": "^2.2.1",
